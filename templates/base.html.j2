@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>{%block title%}Titulek{%endblock%}</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='styles.css')}}">
+
+</head>
+
+<body>
+<p>
+ <h1>Moje stránka</h1>
+</p>
+
+<ul>
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+    <li><a href="{{ url_for('jedna') }}">Historie</a></li>
+    <li><a href="{{ url_for('dva') }}">Fotbal</a></li>
+    <li><a href="{{ url_for('tri') }}">Fotbal je nej</a></li>
+    <li><a href="{{ url_for('login') }}">Login</a></li>
+</ul>
+
+<p class="login"></p>
+{% if "user" in session %}
+Jsi přihlášen jako <strong>{{session.get("user")}}</strong>.
+<a href="{{url_for("logout") }}">Odhlásit</a>
+
+{% else %}
+Musíš se přihlásit.
+<a href="{{url_for("logout") }}">Přihlásit</a>
+
+{% endif %}
+
+{%for category, message in get_flashed_messages(with_categories=true) %}
+<p class="message {{category}}">{{message}}</p>
+{% endfor %}
+
+
+{% block obsah %}
+
+<h3>Fotbal</h3>
+
+<p>Fotbal (z anglického football, foot = noha, ball = míč), též kopaná, je kolektivní míčová hra, která je nejpopulárnějším kolektivním sportem na světě.
+
+Ve fotbale hrají dvě družstva po jedenácti hráčích na obdélníkovém, nejčastěji travnatém hřišti. Jejich cílem je dosáhnout více branek (gólů) než soupeř. Branky je dosaženo tehdy, když míč přejde brankovou čáru mezi tyčemi branky celým objemem. Hraje se hlavně nohama, ale hráči mohou k hraní míčem používat libovolné části těla kromě rukou a paží. Pouze brankář (tzn. jeden z hráčů, odlišený barvou dresu) může v blízkosti vlastní branky hrát i rukama.
+</p>
+
+{% endblock obsah %}
+
+</body>
+</html>

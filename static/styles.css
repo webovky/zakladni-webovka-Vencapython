@@ -1,0 +1,21 @@
+h1{
+    color:aqua
+}
+p{
+    color: blueviolet;
+}
+
+.message{
+    width: 50%;
+    border: solid black 2px;
+    padding: lem;
+    color: rgb(153, 30, 210);
+}
+
+.pass{
+    color: green;
+}
+
+.err{
+    color: red;
+}
